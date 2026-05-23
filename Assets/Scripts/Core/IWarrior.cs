@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IWarrior
 {
-    void TakeDamage();
+    void TakeDamage(int amount);
 
     void RoundStart();
     UniTask DoTurn();
@@ -12,4 +12,6 @@ public interface IWarrior
     bool IsAlive();
     EDiceType[] GetBattleDice();
     void Initialize();
+    int Shield { get; set; }
+    void Heal(int dataValue);
 }

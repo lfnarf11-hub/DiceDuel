@@ -24,9 +24,15 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
         _currentMaxStamina = maxStamina;
     }
 
-    public void TakeDamage()
+    public int Shield { get; set; }
+    public void Heal(int dataValue)
     {
         throw new System.NotImplementedException();
+    }
+
+    public void TakeDamage(int amount)
+    {
+        
     }
 
 

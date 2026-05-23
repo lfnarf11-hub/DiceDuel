@@ -16,3 +16,4 @@ MonoBehaviour:
   color: {r: 0, g: 0.17416215, b: 1, a: 0}
   costsMaxStamina: 0
   abilityPriority: 1
+  particles: {fileID: 6374185648792829834, guid: 6d0360bdb1bacfe4f908165d0ffd5047, type: 3}

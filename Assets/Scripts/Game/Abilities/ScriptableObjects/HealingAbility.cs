@@ -1,14 +1,14 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DefendAbility", menuName = "Abilities/DefendAbility")]
-public class DefendAbility : AbilityBase
+[CreateAssetMenu(fileName = "HealAbility", menuName = "Abilities/HealAbility")]
+public class HealAbility : AbilityBase
 {
     [SerializeField] private ParticleSystem particles;
     
     public override UniTask StartAbilityImplementation(AbilityData data, IWarrior enemy)
     {
-        data.warrior.Shield += data.value;
+        data.warrior.Heal(data.value);
         if (data.warrior is BaseCharacter player)
         {
             ParticleSystem ps = Instantiate(particles, player.transform.position, Quaternion.identity);

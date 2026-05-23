@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2461c6ec3978814b97f1c5cfa36b3ce, type: 3}
-  m_Name: LightAttack
+  m_Name: HeavyAttack
   m_EditorClassIdentifier: Assembly-CSharp::AttackAbility
   icon: {fileID: 21300000, guid: 5e196cd77208214408d5f4092c6ac9e1, type: 3}
   color: {r: 0.7264151, g: 0, b: 0.1283649, a: 0}
   costsMaxStamina: 0
   abilityPriority: 0
-  animationID: Attack1
-  animation: {fileID: 7400000, guid: ec5c0d72368a9bf4ea94460718a2f964, type: 2}
+  animationID: Attack3
+  animation: {fileID: 7400000, guid: ca177ae54531f6f48a5fc3c7ab370ea5, type: 2}
   eventIndex: 1
   attackDist: 1
   moveTime: 0.2
-  comboThreshold: 10
-  attackCombo: {fileID: 11400000, guid: d60a5497833929b4a8f886aa3226daa8, type: 2}
+  comboThreshold: 0
+  attackCombo: {fileID: 0}
