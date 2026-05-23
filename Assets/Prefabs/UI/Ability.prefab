@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2247631320751770175}
   - component: {fileID: 7546387981922573111}
-  - component: {fileID: 7879735645237986584}
   m_Layer: 3
   m_Name: DragAndDropArea
   m_TagString: Untagged
@@ -61,19 +60,6 @@ MonoBehaviour:
   m_Spacing: {x: -6, y: -6}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &7879735645237986584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765370757697708402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c3ea7e44290f66439848e223cb1d105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rectTransform: {fileID: 5817274005804685016}
 --- !u!1 &1529150250644375022
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +125,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5f5de99a123dbcb41aa99ee72912c00e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c7fb68013aaf8774993c7c1abb23e901, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -160,7 +146,8 @@ GameObject:
   - component: {fileID: 4086465676413109480}
   - component: {fileID: 7925705555231598998}
   - component: {fileID: 6738107183718635220}
-  - component: {fileID: 271171762317819315}
+  - component: {fileID: 487614996038137485}
+  - component: {fileID: 7404780975445754427}
   m_Layer: 0
   m_Name: Ability
   m_TagString: Untagged
@@ -182,8 +169,8 @@ RectTransform:
   m_Children:
   - {fileID: 7185437853900116936}
   - {fileID: 2247631320751770175}
-  - {fileID: 9017655676021200662}
   - {fileID: 5817274005804685016}
+  - {fileID: 3751006570969958148}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -229,7 +216,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &271171762317819315
+--- !u!114 &487614996038137485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,11 +225,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1916363461338771845}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d501e02b928dc045896cb1510b37696, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e790c5d4399a9041b92f2f36885a55c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  effectiveRange: {fileID: 3313676401218279023}
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityUI
   icon: {fileID: 2140484029940361073}
+  text: {fileID: 3824933698175381359}
+  currentAbility: {fileID: 11400000, guid: f00eb1351baad9f468b21d32c83a9c72, type: 2}
+--- !u!114 &7404780975445754427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916363461338771845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd68eccae414cc64e8361647b8c2cdd0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DropZone
+  rectTransform: {fileID: 2247631320751770175}
+  allowedLayers:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1 &2913215217195034471
 GameObject:
   m_ObjectHideFlags: 0
@@ -278,7 +282,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &6151936248266151063
+--- !u!1 &3651636330147479238
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,9 +290,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9017655676021200662}
-  - component: {fileID: 1853728824961650503}
-  - component: {fileID: 3313676401218279023}
+  - component: {fileID: 3751006570969958148}
+  - component: {fileID: 2277416669176946847}
+  - component: {fileID: 3824933698175381359}
   m_Layer: 0
   m_Name: Value
   m_TagString: Untagged
@@ -296,13 +300,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &9017655676021200662
+--- !u!224 &3751006570969958148
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6151936248266151063}
+  m_GameObject: {fileID: 3651636330147479238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -312,29 +316,29 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -75, y: -40}
-  m_SizeDelta: {x: 75, y: 30}
+  m_AnchoredPosition: {x: -71.667, y: -36.0156}
+  m_SizeDelta: {x: 80, y: 22.0311}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1853728824961650503
+--- !u!222 &2277416669176946847
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6151936248266151063}
+  m_GameObject: {fileID: 3651636330147479238}
   m_CullTransparentMesh: 1
---- !u!114 &3313676401218279023
+--- !u!114 &3824933698175381359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6151936248266151063}
+  m_GameObject: {fileID: 3651636330147479238}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
@@ -370,17 +374,18 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.25
-  m_fontSizeBase: 0.25
+  m_fontSize: 21.7
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 12
-  m_fontSizeMax: 20
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -408,7 +413,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -0.15250397, y: 0, z: 0, w: -13.27253}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
