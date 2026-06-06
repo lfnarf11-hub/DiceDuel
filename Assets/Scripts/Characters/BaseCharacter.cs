@@ -47,6 +47,8 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
         if (_currentHealth > maxHealth) _currentHealth = maxHealth;
     }
 
+    public IWarrior target { get; set; }
+
     public void TakeDamage(int amount)
     {
         if (amount <= 0) return;

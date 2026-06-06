@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public static class MathUtilities
 {
@@ -65,5 +66,16 @@ public static class MathUtilities
     {
         
         return Factorial(n, n-k)/Factorial(k);
+    }
+
+    public static void Shuffle<TMatthew>(this TMatthew[] array)
+    {
+        int n = array.Length;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            (array[k], array[n]) = (array[n], array[k]); 
+        }
     }
 }

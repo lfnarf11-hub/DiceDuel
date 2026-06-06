@@ -14,4 +14,5 @@ public interface IWarrior
     void Initialize();
     int Shield { get; set; }
     void Heal(int dataValue);
+    IWarrior target { get; set; }
 }

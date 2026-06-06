@@ -24,6 +24,8 @@ public class BattleManager
 
     private async UniTaskVoid PlayBattle()
     {
+        leftWarrior.target = rightWarrior;
+        rightWarrior.target = leftWarrior;
         leftWarrior.Initialize();
         rightWarrior.Initialize();
         while (BattleIsRunning())
