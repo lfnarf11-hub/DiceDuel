@@ -41,9 +41,9 @@ public class DragAndDropObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
         if (currentTarget && currentTarget.CanAcceptItem(this))
         {
             transform.SetParent(currentTarget.transform);
+            OnDropZoneChanged?.Invoke(currentTarget);
             previousTarget = currentTarget;
             currentTarget = null;
-            OnDropZoneChanged?.Invoke(currentTarget);
            
         }
         else if(previousTarget)
@@ -63,6 +63,6 @@ public class DragAndDropObject : MonoBehaviour, IPointerEnterHandler, IPointerEx
     public void SetTarget(DropZone dropZone)
     {
         if (dropZone == previousTarget) return;
-        previousTarget = dropZone;
+        currentTarget = dropZone;
     }
 }

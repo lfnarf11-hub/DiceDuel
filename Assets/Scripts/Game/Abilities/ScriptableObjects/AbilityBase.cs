@@ -23,10 +23,10 @@ public abstract class AbilityBase : ScriptableObject
 
 public struct AbilityData
 {
-    public readonly AbilityBase abilityBase;
-    public readonly IWarrior warrior;
-    public readonly EDiceType[] dice;
-    public readonly int value;
+    public  AbilityBase abilityBase;
+    public  IWarrior warrior;
+    public  EDiceType[] dice;
+    public  int value;
 
     public AbilityData(AbilityBase abilityBase, IWarrior warrior, EDiceType[] dice, int value)
     {

@@ -39,4 +39,18 @@ public class AbilityManager : MonoBehaviour
             diceUI.diceType = diceType;
         }
     }
+    
+    public List<AbilityData> retrieveData(BaseCharacter playerchar)
+    {
+        List<AbilityData> Btuhuh = new List<AbilityData>();
+
+        foreach(AbilityUI ui in activeAbilitiesList)
+        {
+            Btuhuh.Add(new AbilityData(ui.CurrentAbility, playerchar, ui.Dice.ToArray(), 0));
+        }
+
+
+
+        return Btuhuh;
+    }
 }

@@ -10,18 +10,19 @@ public class AbilityUI : MonoBehaviour
     [SerializeField] private Image icon;
     [SerializeField] private TextMeshProUGUI text;
     [SerializeField] private AbilityBase currentAbility;
+    public AbilityBase CurrentAbility => currentAbility;
     private int low, high;
     public int Low { get => low;
         private set
         {
             low = value;
-            text.text = $"{Low} - {High}";
+            text.text  = GenerateFancyText(low, high);
         }
     }
     public int High { get => high;  
         private set {
             high = value;
-            text.text = $"{Low} - {High}";
+            text.text  = GenerateFancyText(low, high);
         }
     }
     public readonly List<EDiceType> Dice = new();

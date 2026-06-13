@@ -5,9 +5,20 @@ using UnityEngine;
 public class PlayerCharacter : BaseCharacter
 {
     [SerializeField] AbilityManager _abilityManager;
+    bool IsTurnRunning = false;
+    [SerializeField] Canvas Button;
+
     public override async UniTask DoTurn()
     {
-        await RollDice();
+        IsTurnRunning = true;
+        Button.enabled = true;
+        await UniTask.WaitWhile(TurnRunning);
+        abilities = _abilityManager.retrieveData(this);
+    }
+
+    public bool TurnRunning()
+    {
+        return IsTurnRunning;
     }
 
     public override void Initialize()
@@ -17,8 +28,10 @@ public class PlayerCharacter : BaseCharacter
         _abilityManager.GenerateDiceUI(diceToRoll);
     }
 
-    public async Task TurnComplete()
+    public void CompleteTurn()
     {
-        throw new System.NotImplementedException();
+        Button.enabled = false;
+        IsTurnRunning = false;
+
     }
 }

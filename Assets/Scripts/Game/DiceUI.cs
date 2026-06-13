@@ -34,12 +34,11 @@ public class DiceUI : MonoBehaviour
     private void UpdateAbility(DropZone obj)
     {
         current?.RemoveDice(diceType);
-        AbilityUI ability = obj.GetComponent<AbilityUI>();
-        if (ability)
+        current = obj.GetComponent<AbilityUI>();
+        
+        if (current)
         {
-            ability.AddDice(diceType);
-            current = ability;
-            
+            current.AddDice(diceType);
         }
     }
 }

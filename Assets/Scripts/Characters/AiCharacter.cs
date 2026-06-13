@@ -10,7 +10,7 @@ public class AiCharacter : BaseCharacter
     public override async UniTask DoTurn()
     {
         if (target is PlayerCharacter player)
-            await player.TurnComplete();
+            await UniTask.WaitWhile(player.TurnRunning);
         AssignDice();
         await RollDice();
         await UniTask.Delay(3000);
