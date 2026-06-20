@@ -34,7 +34,7 @@ public class DiceUI : MonoBehaviour
     private void UpdateAbility(DropZone obj)
     {
         current?.RemoveDice(diceType);
-        current = obj.GetComponent<AbilityUI>();
+        current = obj.GetComponentInParent<AbilityUI>();
         
         if (current)
         {

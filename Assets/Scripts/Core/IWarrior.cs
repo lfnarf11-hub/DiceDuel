@@ -8,6 +8,8 @@ public interface IWarrior
 
     void RoundStart();
     UniTask DoTurn();
+    UniTask RollDice();
+
     void EndRound();
     bool IsAlive();
     EDiceType[] GetBattleDice();

@@ -7,13 +7,23 @@ using Random = UnityEngine.Random;
 public class AiCharacter : BaseCharacter 
 {
     [SerializeField] private EAIType aiType;
+    
+    
+    
     public override async UniTask DoTurn()
     {
         if (target is PlayerCharacter player)
             await UniTask.WaitWhile(player.TurnRunning);
-        AssignDice();
-        await RollDice();
-        await UniTask.Delay(3000);
+
+        var assigned = AssignDice();
+
+        string counts = "";
+        foreach (var a in assigned)
+            counts += a.dice.Length + ",";
+        Debug.Log($"AI assigned {assigned.Length} abilities, dice counts: {counts}", gameObject);
+
+        abilities.AddRange(assigned);
+        Debug.Log("AI Turn Complete", gameObject);
     }
 
     AbilityData[] AssignDice()
@@ -39,17 +49,17 @@ public class AiCharacter : BaseCharacter
         diceToRoll.Shuffle();
         AbilityData[] data = new AbilityData[activeAbilities.Length];
         int i = 0;
-        for (var index = 0; index < activeAbilities.Length; index++)
+        for (int index = 0; index < activeAbilities.Length; index++)
         {
             var ability = activeAbilities[index];
-            int diceCount = Random.Range(0, base.diceToRoll.Length - i);
+            int remaining = diceToRoll.Length - i;
+            bool isLast = index == activeAbilities.Length - 1;
+            int diceCount = isLast ? remaining : Random.Range(0, remaining + 1);
             EDiceType[] dice = new EDiceType[diceCount];
             for (int j = i; j < i + diceCount; j++)
-            {
-                
-            }
+                dice[j - i] = diceToRoll[j];
+            i += diceCount;
             data[index] = new(ability, target, dice, 0);
-
         }
         return data;
     }

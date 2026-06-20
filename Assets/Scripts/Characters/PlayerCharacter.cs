@@ -14,6 +14,8 @@ public class PlayerCharacter : BaseCharacter
         Button.enabled = true;
         await UniTask.WaitWhile(TurnRunning);
         abilities = _abilityManager.retrieveData(this);
+        Debug.Log("Player Turn Complete", gameObject);
+
     }
 
     public bool TurnRunning()

@@ -46,7 +46,7 @@ public class AbilityManager : MonoBehaviour
 
         foreach(AbilityUI ui in activeAbilitiesList)
         {
-            Btuhuh.Add(new AbilityData(ui.CurrentAbility, playerchar, ui.Dice.ToArray(), 0));
+            Btuhuh.Add(new AbilityData(ui.currentAbility, playerchar, ui.Dice.ToArray(), 0));
         }
 
 

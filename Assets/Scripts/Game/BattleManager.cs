@@ -26,18 +26,35 @@ public class BattleManager
     {
         leftWarrior.target = rightWarrior;
         rightWarrior.target = leftWarrior;
+        
         leftWarrior.Initialize();
         rightWarrior.Initialize();
+        
+        Debug.Log("Game Start");
+        
         while (BattleIsRunning())
         {
+            Debug.Log("Round start");
+
             leftWarrior.RoundStart();
             rightWarrior.RoundStart();
-            await UniTask.WhenAll(leftWarrior.DoTurn(), rightWarrior.DoTurn());
             
+            Debug.Log("Do Turn");
+            
+            await UniTask.WhenAll(leftWarrior.DoTurn(), rightWarrior.DoTurn());
+           
+            Debug.Log("Roll Dice");
+            
+            await UniTask.WhenAll(leftWarrior.RollDice(), rightWarrior.RollDice());
+            Debug.Log("End Turn");
+
             leftWarrior.EndRound();
             rightWarrior.EndRound();
-            await UniTask.Delay(5000);
+            Debug.Log("Round Complete");
+
         }
+        Debug.Log($"Battle has ended. Left is alive? {leftWarrior.IsAlive()}, Right is alive? {rightWarrior.IsAlive()}");
+
     }
 
     private bool BattleIsRunning()

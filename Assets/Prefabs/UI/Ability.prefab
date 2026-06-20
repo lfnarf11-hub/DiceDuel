@@ -184,8 +184,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7185437853900116936}
-  - {fileID: 2247631320751770175}
   - {fileID: 5817274005804685016}
+  - {fileID: 2247631320751770175}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -245,7 +245,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AbilityUI
   icon: {fileID: 2140484029940361073}
   text: {fileID: 3824933698175381359}
-  currentAbility: {fileID: 11400000, guid: f00eb1351baad9f468b21d32c83a9c72, type: 2}
+  <currentAbility>k__BackingField: {fileID: 0}
 --- !u!1 &2913215217195034471
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,11 +373,11 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 144
-  m_fontSizeBase: 144
+  m_fontSize: 25
+  m_fontSizeBase: 25
   m_fontWeight: 400
-  m_enableAutoSizing: 1
-  m_fontSizeMin: 144
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 0.01
   m_fontSizeMax: 144
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -402,7 +402,7 @@ MonoBehaviour:
   m_isRichText: 1
   m_EmojiFallbackSupport: 1
   m_parseCtrlCharacters: 1
-  m_isOrthographic: 0
+  m_isOrthographic: 1
   m_isCullingEnabled: 0
   m_horizontalMapping: 0
   m_verticalMapping: 0
