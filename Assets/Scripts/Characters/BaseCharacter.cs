@@ -13,7 +13,7 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
     public int MaxHealth => maxHealth;
     [SerializeField] private int maxShield;
     public int MaxShield => maxShield;
-    [SerializeField] protected EDiceType[] diceToRoll;
+    protected abstract EDiceType[] diceToRoll {get; set; }
     [SerializeField][ColorUsage(true, true)] private Color glowColor = new (0, 1, 0.85f);
     [SerializeField][ColorUsage(true, true)] private Color textColor = new (1, 0, 0.25f);
     [SerializeField] protected AbilityBase[] activeAbilities;

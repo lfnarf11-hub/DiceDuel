@@ -7,7 +7,8 @@ using Random = UnityEngine.Random;
 public class AiCharacter : BaseCharacter 
 {
     [SerializeField] private EAIType aiType;
-    
+    [field:SerializeField] protected override EDiceType[] diceToRoll { get; set; }
+
     
     
     public override async UniTask DoTurn()

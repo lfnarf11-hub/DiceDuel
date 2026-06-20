@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Given.Manager;
 using UnityEngine;
 
 public class PlayerCharacter : BaseCharacter
@@ -23,8 +24,11 @@ public class PlayerCharacter : BaseCharacter
         return IsTurnRunning;
     }
 
+    protected override EDiceType[] diceToRoll { get; set; }
+
     public override void Initialize()
     {
+        diceToRoll = PlayerData.diceInventory.ToArray();
         base.Initialize();
         _abilityManager.RegenerateAbilities(activeAbilities);
         _abilityManager.GenerateDiceUI(diceToRoll);
