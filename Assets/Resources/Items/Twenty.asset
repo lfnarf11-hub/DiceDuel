@@ -15,4 +15,4 @@ MonoBehaviour:
   price: 2100
   name: 'Icosahedron '
   icon: {fileID: -1271947126433996053, guid: 20f2b6272f49ac34894136a866e4773d, type: 3}
-  diceType: 3
+  diceType: 4

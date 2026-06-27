@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShopDice
   price: 700
   name: Hexahedron
-  icon: {fileID: 5597604162469967688, guid: 20f2b6272f49ac34894136a866e4773d, type: 3}
+  icon: {fileID: 3243597988762151282, guid: 20f2b6272f49ac34894136a866e4773d, type: 3}
   diceType: 1
