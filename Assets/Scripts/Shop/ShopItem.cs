@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class ShopItem : MonoBehaviour
 {
  public Button purchaseButton;
- public int price;
+ private int price;
  public TextMeshProUGUI priceText;
  public Item myItem;
  public Image itemImage;
@@ -44,5 +44,6 @@ public class ShopItem : MonoBehaviour
      {
          PlayerData.AddDice(dice);
      }
+     
  }
 }

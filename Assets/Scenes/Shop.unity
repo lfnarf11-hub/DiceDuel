@@ -1373,9 +1373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShopItem
   purchaseButton: {fileID: 9017442764886242471}
-  price: 0
   priceText: {fileID: 9017442764886242472}
-  myItem: {fileID: 0}
+  myItem: {fileID: 11400000, guid: 0a241154eaa059b44a7532189c299194, type: 2}
   itemImage: {fileID: 9017442764886242473}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
