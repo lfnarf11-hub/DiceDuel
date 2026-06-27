@@ -13,6 +13,7 @@ public class DiceUI : MonoBehaviour
     private EDiceType _diceType;
     [SerializeField] private Image icon;
     private AbilityUI current;
+    
 
     private void Awake()
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Given.Manager;
-using UnityEditor.Overlays;
+
 using UnityEngine;
 
 public static class PlayerData
@@ -49,5 +49,12 @@ public static class PlayerData
     {
         diceInventory.Add(dice.diceType);
         OnDiceUpdated?.Invoke();
+    }
+    
+    public static void Reset()
+    {
+        PlayerPrefs.DeleteAll();
+        PlayerPrefs.Save();
+        Load();
     }
 }

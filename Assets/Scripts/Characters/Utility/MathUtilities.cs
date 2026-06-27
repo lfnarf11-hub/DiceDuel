@@ -78,4 +78,9 @@ public static class MathUtilities
             (array[k], array[n]) = (array[n], array[k]); 
         }
     }
+
+    static double CompoundInterest(double amount, float rate, float time, int intervals = 1)
+    {
+        return amount * Mathf.Pow(1+rate/intervals,time*intervals); 
+    }
 }

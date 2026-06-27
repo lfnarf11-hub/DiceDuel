@@ -29,7 +29,7 @@ public class ShopItem : MonoBehaviour
 
  private void UpdateButton()
  {
-     purchaseButton.interactable = (PlayerData.Gold >= price);
+     purchaseButton.interactable = (PlayerData.Gold >= price && PlayerData.diceInventory.Count < 12);
  }
 
  private void OnDestroy()
