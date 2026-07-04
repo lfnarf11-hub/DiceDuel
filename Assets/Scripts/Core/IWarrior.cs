@@ -17,4 +17,5 @@ public interface IWarrior
     int Shield { get; set; }
     void Heal(int dataValue);
     IWarrior target { get; set; }
+    UniTask UseAbilities();
 }

@@ -27,7 +27,13 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
     [SerializeField] private AudioResource damageSound;
     [SerializeField] private AudioResource healSound;
     [SerializeField] private AudioResource blockSound;
+    protected Animator animator;
+    private string hurtAnimationID = "OnHurt";
+    private string blockAnimationID = "Block";
+    
     public List<AbilityData> abilities = new List<AbilityData>();
+    [SerializeField] private GameObject ragdoll;
+    
 
     
     public virtual void Initialize()
@@ -35,6 +41,7 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
         ValidateAssignments();
 
         audioSource = GetComponent<AudioSource>();
+        animator = GetComponentInChildren<Animator>();
         _currentHealth = maxHealth;
         _currentStamina = maxStamina;
         _currentMaxStamina = maxStamina;
@@ -108,16 +115,19 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
         int damage = Shield - amount;
         if (damage >= 0)
         {
-            //play sound or particles
-            audioSource.resource = blockSound;
+            //play block sound and animation
+            audioSource.resource = damageSound;
             audioSource.Play();
+            animator.SetTrigger(blockAnimationID);
             
             Shield -= amount;
         }
         else
         {
-            audioSource.resource = damageSound;
+            //play damage sound and animation
+            audioSource.resource = blockSound;
             audioSource.Play();
+            animator.SetTrigger(hurtAnimationID);
             
             _currentHealth = _currentHealth + Shield - amount;
             Shield = 0;
@@ -138,6 +148,7 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
 
     protected virtual void Die()
     {
+        Instantiate(ragdoll);
         //something
         Debug.Log("WE DIED", gameObject);
     }
@@ -165,7 +176,8 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
     [ContextMenu("RollDice")]
     public async UniTask RollDice ()
     {
-        for (int j = 0; j < abilities.Count; ++ j)
+        List<UniTask<int[]>> rollForAbilities = new();
+        for (int j = 0; j < abilities.Count; ++j)
         {
             AbilityData Ability = abilities[j];
 
@@ -174,19 +186,26 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
 
             for (int i = 0; i < Ability.dice.Length; i += 1)
             {
-                Dice dice = DiceManager.Instance.CreateDice(Ability.dice[i], transform.position.x < 0, Ability.abilityBase.Color, textColor);
+                Dice dice = DiceManager.Instance.CreateDice(Ability.dice[i], transform.position.x < 0,
+                    Ability.abilityBase.Color, textColor);
 
                 tasks[i] = dice.Roll(dice.transform.forward);
 
             }
 
-            int[] num = await UniTask.WhenAll(tasks);
+            var abilityRoll = UniTask.WhenAll(tasks);
+            rollForAbilities.Add(abilityRoll);
+        }
 
+        var rolls = await UniTask.WhenAll(rollForAbilities);
+        for(int j = 0; j < rolls.Length; j++) 
+        {
+            AbilityData Ability = abilities[j];
             int sum = 0;
 
-            for (int i = 0; i < num.Length; i += 1)
+            for (int i = 0; i < rolls[j].Length; i += 1)
             {
-                sum += num[i];
+                sum += rolls[j][i];
 
             }
             Debug.Log($"Player Rolled for {Ability.abilityBase.name} with {sum}", gameObject);
@@ -199,17 +218,21 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
            
         }
         abilities =  abilities.OrderBy(a => a.abilityBase.AbilityPriority).ToList();
+        
+        Debug.Log($"Rolled Dice for {gameObject.name}", gameObject);
+        
+    }
 
+    public async UniTask UseAbilities()
+    {
         for (int j = 0; j < abilities.Count; ++j)
         {
             AbilityData Ability = abilities[j];
             await Ability.abilityBase.StartAbility(Ability, target);
         }
         abilities.Clear();
-        Debug.Log($"Rolled Dice for {gameObject.name}", gameObject);
-
     }
-    
+
     void RoundEnd()
     {
         

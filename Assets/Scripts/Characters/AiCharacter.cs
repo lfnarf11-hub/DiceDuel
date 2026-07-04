@@ -60,7 +60,7 @@ public class AiCharacter : BaseCharacter
             for (int j = i; j < i + diceCount; j++)
                 dice[j - i] = diceToRoll[j];
             i += diceCount;
-            data[index] = new(ability, target, dice, 0);
+            data[index] = new(ability, this, dice, 0);
         }
         return data;
     }

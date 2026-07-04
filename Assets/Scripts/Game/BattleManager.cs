@@ -40,14 +40,15 @@ public class BattleManager
             rightWarrior.RoundStart();
             
             Debug.Log("Do Turn");
-            
             await UniTask.WhenAll(leftWarrior.DoTurn(), rightWarrior.DoTurn());
            
             Debug.Log("Roll Dice");
+            await UniTask.WhenAll(leftWarrior.RollDice(), rightWarrior.RollDice()); 
             
-            await UniTask.WhenAll(leftWarrior.RollDice(), rightWarrior.RollDice());
+            Debug.Log("Use abilities");
+            await UniTask.WhenAll(leftWarrior.UseAbilities(), rightWarrior.UseAbilities());
+            
             Debug.Log("End Turn");
-
             leftWarrior.EndRound();
             rightWarrior.EndRound();
             Debug.Log("Round Complete");

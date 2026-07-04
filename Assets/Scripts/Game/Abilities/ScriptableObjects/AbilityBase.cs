@@ -18,7 +18,7 @@ public abstract class AbilityBase : ScriptableObject
         if(data.value <= 0) return UniTask.CompletedTask;
         return StartAbilityImplementation(data, enemy);
     }
-    public abstract UniTask StartAbilityImplementation(AbilityData data, IWarrior enemy);
+    public abstract UniTask StartAbilityImplementation(AbilityData user, IWarrior target);
 }
 
 public struct AbilityData
