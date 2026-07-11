@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 412f7cd1dd3dc2d47a79f7e7aa8981f5, type: 3}
   m_Name: HealAbility
   m_EditorClassIdentifier: Assembly-CSharp::HealAbility
-  icon: {fileID: 0}
-  color: {r: 0, g: 0, b: 0, a: 0}
+  icon: {fileID: 21300000, guid: 5f5de99a123dbcb41aa99ee72912c00e, type: 3}
+  color: {r: 0.27095318, g: 1, b: 0, a: 0}
   costsMaxStamina: 0
-  abilityPriority: 0
-  particles: {fileID: 0}
+  abilityPriority: 20
+  particles: {fileID: 3233229968029264604, guid: 603e870b90d876349b6851df3c7116a6, type: 3}

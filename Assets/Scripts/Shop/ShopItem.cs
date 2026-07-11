@@ -39,11 +39,11 @@ public class ShopItem : MonoBehaviour
 
  private void Purchase()
  {
-     PlayerData.Gold -= price;
+     
      if (myItem is ShopDice dice)
      {
          PlayerData.AddDice(dice);
      }
-     
+     PlayerData.Gold -= price;
  }
 }
