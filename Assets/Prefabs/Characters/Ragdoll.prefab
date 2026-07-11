@@ -2269,25 +2269,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Smoke
       objectReference: {fileID: 0}
+    - target: {fileID: 3855281085567508804, guid: 02973d38bab877f4f85cf043b213df4f, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.25490198
+      objectReference: {fileID: 0}
     - target: {fileID: 8317631991048320367, guid: 02973d38bab877f4f85cf043b213df4f, type: 3}
       propertyPath: m_LocalScale.x
-      value: -5.5951996
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8317631991048320367, guid: 02973d38bab877f4f85cf043b213df4f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 4.873139
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8317631991048320367, guid: 02973d38bab877f4f85cf043b213df4f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.1675398
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8317631991048320367, guid: 02973d38bab877f4f85cf043b213df4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.8501012
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317631991048320367, guid: 02973d38bab877f4f85cf043b213df4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.4038029
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8317631991048320367, guid: 02973d38bab877f4f85cf043b213df4f, type: 3}
       propertyPath: m_LocalPosition.z

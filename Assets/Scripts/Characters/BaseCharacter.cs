@@ -21,6 +21,7 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
     private int _currentHealth;
     public int CurrentHealth => _currentHealth;
     private int _currentMaxStamina;
+    private bool _killed = false;
     
     [Header("Audio")] 
     protected AudioSource audioSource;
@@ -131,9 +132,10 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
             
             _currentHealth = _currentHealth + Shield - amount;
             Shield = 0;
-            if (!IsAlive())
+            if (!IsAlive() && !_killed)
             {
                 Die();
+                _killed = true;
             }
         }
         
@@ -148,9 +150,12 @@ public abstract class BaseCharacter : MonoBehaviour, IWarrior
 
     protected virtual void Die()
     {
-        Instantiate(ragdoll);
+        
+        Instantiate(ragdoll, transform.position, Quaternion.identity);
+        gameObject.SetActive(false);
+        
         //something
-        Debug.Log("WE DIED", gameObject);
+        Debug.Log("I DIED", gameObject);
     }
     
     

@@ -8,9 +8,20 @@ public class AiCharacter : BaseCharacter
 {
     [SerializeField] private EAIType aiType;
     [field:SerializeField] protected override EDiceType[] diceToRoll { get; set; }
+    [SerializeField] private int coinMin, coinMax;
+    [SerializeField] private ParticleSystem coinDrop;
 
-    
-    
+    protected override void Die()
+    {
+        base.Die();
+        ParticleSystem particles = Instantiate(coinDrop, transform.position, Quaternion.identity);
+        var module = particles.emission;
+        int gold = Random.Range(coinMin, coinMax);
+        module.SetBurst(0, new ParticleSystem.Burst(0, gold));
+        particles.Play();
+        PlayerData.Gold += gold;
+    }
+
     public override async UniTask DoTurn()
     {
         if (target is PlayerCharacter player)
