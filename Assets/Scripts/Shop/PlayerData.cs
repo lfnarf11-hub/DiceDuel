@@ -10,10 +10,26 @@ public static class PlayerData
     public static int Gold { get { return gold; } set { gold = value; Save(); OnGoldUpdated?.Invoke();} }
     public static event Action OnGoldUpdated;
     public static event Action OnDiceUpdated;
+    public static event Action OnCurrenyDayUpdated;
+
     public static List<EDiceType> diceInventory = new();
+    
+    private static int currentDay = 10;
+    public static int CurrentDay => currentDay;
+
+    public static void GoToNextDay()
+    {
+        currentDay += 1;
+        OnCurrenyDayUpdated?.Invoke();
+        Save();
+    }
+
+    
     public static void Save()
     {
         PlayerPrefs.SetInt("Gold", gold);
+        PlayerPrefs.SetInt("Day", currentDay);
+
         string s = "";
         for (int i = 0; i < diceInventory.Count; i++)
         {
@@ -28,6 +44,8 @@ public static class PlayerData
     public static void Load()
     {
         gold = PlayerPrefs.GetInt("Gold", 999);
+        currentDay = PlayerPrefs.GetInt("Day", 0);
+
         string s = PlayerPrefs.GetString("Dice", "Four,Four,Six,Eight");
         Debug.Log($"Loading {s}");
         diceInventory.Clear();

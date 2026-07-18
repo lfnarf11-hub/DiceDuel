@@ -46,6 +46,16 @@ public class BattleManager
             await UniTask.WhenAll(leftWarrior.RollDice(), rightWarrior.RollDice()); 
             
             Debug.Log("Use abilities");
+            
+            //To fix abilities, we can use a 'QUEUE' system and instead of doing UseAbilities, we get the next ability.
+            //If the ability is null we ignore it other goes first. if both null, then proceed.
+            //If the ability is higher priority we go first
+            //else enemy goes first
+            //If the ability is same, if we had the lower role, we go first.
+            //else enemy goes first.
+            
+            //****After any player goes, check if the battle had ended.****//
+            
             await UniTask.WhenAll(leftWarrior.UseAbilities(), rightWarrior.UseAbilities());
             
             Debug.Log("End Turn");

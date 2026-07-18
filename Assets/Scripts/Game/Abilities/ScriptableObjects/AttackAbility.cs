@@ -32,7 +32,7 @@ public class AttackAbility : AbilityBase
         }
         Vector2 playerPos =  player.transform.position;
         Vector2 enemyPos = enemyCharacter.transform.position;
-        await MoveTo(player.transform, playerPos, enemyPos - (enemyPos-playerPos).normalized*attackDist, moveTime);
+        await MoveTo(player.transform, enemyCharacter.transform, -(enemyPos-playerPos).normalized*attackDist, moveTime);
         await Combo(currentAnimator, data.value, enemyCharacter, player);
         await UniTask.Delay(300);
         await MoveTo(player.transform, enemyPos - (enemyPos-playerPos).normalized*attackDist, playerPos, moveTime*0.8f);
@@ -58,7 +58,7 @@ public class AttackAbility : AbilityBase
         }
     }
 
-    private async UniTask MoveTo(Transform playerTransform, Vector2 playerPos, Vector2 enemyPos, float f)
+    private async UniTask MoveTo(Transform playerTransform, Vector3 playerPos, Vector3 enemyPos, float f)
     {
         if (playerPos == enemyPos) return;
         float currentTime = 0f;
@@ -70,5 +70,24 @@ public class AttackAbility : AbilityBase
             await UniTask.Yield();
         }
         playerTransform.position = Vector3.Lerp(playerPos, enemyPos, 1f);
+        
+    }
+    
+    //OVERLOAD: A secondary version that allows us to move to a moving target
+    private async UniTask MoveTo(Transform myTransform, Transform targetTransform, Vector3 offset, float f)
+    {
+        Vector3 playerPos = myTransform.position;
+        if (playerPos == targetTransform.position + offset) return;
+        float currentTime = 0f;
+        while (currentTime < f)
+        {
+            float t = currentTime / f;
+            // We cannot cache the position and must use targetTransform.position as it is moving every frame
+            myTransform.position = Vector3.Lerp(playerPos, targetTransform.position + offset, t); 
+            currentTime += Time.deltaTime;
+            await UniTask.Yield();
+        }
+        myTransform.position = Vector3.Lerp(playerPos, targetTransform.position + offset, 1f);
+        
     }
 }

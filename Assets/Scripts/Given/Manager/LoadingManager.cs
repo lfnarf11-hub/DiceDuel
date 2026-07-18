@@ -28,6 +28,11 @@ namespace Given.Manager
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        private void OnDisable()
+        {
+            if(Instance == this)
+                _targetMaterial.SetFloat(StaticUtility.TimeID, 0);
+        }
 
 
         public void LoadLevelById(int id)
